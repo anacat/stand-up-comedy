@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Windows.Kinect;
+using UnityEngine.UI;
 
 public class ColorSourceView : MonoBehaviour
 {
@@ -25,6 +26,6 @@ public class ColorSourceView : MonoBehaviour
             return;
         }
         
-        gameObject.GetComponent<Renderer>().material.mainTexture = _ColorManager.GetColorTexture();
+        gameObject.GetComponent<RawImage>().texture = _ColorManager.GetColorTexture();
     }
 }
