@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5302fdf7d10e74fbbbe1a2f7503f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorSourceManager: {fileID: 1425491756}
+  colorSourceManager: {fileID: 1425491757}
 --- !u!114 &15955716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,11 +462,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc29da0457951340836a97c438c11da, type: 3}
---- !u!1 &1425491756 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8759122933386000061, guid: 9dc29da0457951340836a97c438c11da, type: 3}
+--- !u!114 &1425491757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1157406053457781966, guid: 9dc29da0457951340836a97c438c11da, type: 3}
   m_PrefabInstance: {fileID: 1425491755}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ab5bea6110edb4081e490c0982748d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1511202611
 GameObject:
   m_ObjectHideFlags: 0

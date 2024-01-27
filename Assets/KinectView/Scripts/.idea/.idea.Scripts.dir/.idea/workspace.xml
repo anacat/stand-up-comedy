@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a34fe219-96a1-4d90-8a50-a19ca2557cfb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/Built-In Samples.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/HDRP Samples 10x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/HDRP Samples 12x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/HDRP Samples 14x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/HDRP Samples 15x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/HDRP Samples 16x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/HDRP Samples.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/Sample Resources.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/URP Samples 10x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/URP Samples 12x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/URP Samples 14x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/URP Samples 15x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/URP Samples 16x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Examples/URP Samples.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/Editor/Templates/TemplateMenuItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/Editor/Templates/TemplateMenuItems.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/EditorResources/Templates/HDRP 10x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/EditorResources/Templates/HDRP 12x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/EditorResources/Templates/HDRP 14x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/EditorResources/Templates/HDRP 15x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/EditorResources/Templates/HDRP 16x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/EditorResources/Templates/URP 10x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/EditorResources/Templates/URP 12x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/EditorResources/Templates/URP 14x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/EditorResources/Templates/URP 15x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AmplifyShaderEditor/Plugins/EditorResources/Templates/URP 16x.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen/Materials/GreenScreen.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen/Materials/GreenScreen.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen/Materials/GreenScreenShader.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen/Materials/GreenScreenShader.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen/Scripts/CoordinateMapperManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen/Scripts/CoordinateMapperManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen/Scripts/CoordinateMapperView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../GreenScreen/Scripts/CoordinateMapperView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Packages/packages-lock.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2bVvCDWgZpOs6U0d48cf4bqIMTQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\catar\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
+      "C:\\Users\\catar\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
+      "C:\\Users\\catar\\AppData\\Local\\Symbols\\src"
+    ]
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a34fe219-96a1-4d90-8a50-a19ca2557cfb" name="Changes" comment="" />
+      <created>1706312932134</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1706312932134</updated>
+      <workItem from="1706312937083" duration="609000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
