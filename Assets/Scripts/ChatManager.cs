@@ -8,22 +8,23 @@ public class ChatManager : MonoBehaviour
     private Transform _messageLayout;
     [SerializeField]
     private GameObject _messageControllerPrefab;
+    [SerializeField]
+    private MessageController _loadingMessage;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool _started = false;
+
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-    }
-
-    public void Initializing()
-    {
-
+        if (!_started && Input.anyKeyDown)
+        {
+            _started = true;
+            _loadingMessage.gameObject.SetActive(true);
+        }
     }
 
     public void WriteMessage(Message message)
