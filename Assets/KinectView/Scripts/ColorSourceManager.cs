@@ -29,7 +29,8 @@ public class ColorSourceManager : MonoBehaviour
             ColorWidth = frameDesc.Width;
             ColorHeight = frameDesc.Height;
             
-            _Texture = new Texture2D(frameDesc.Width, frameDesc.Height, TextureFormat.RGBA32, false);
+            _Texture = new Texture2D(frameDesc.Width , frameDesc.Height , TextureFormat.RGBA32, false);
+
             _Data = new byte[frameDesc.BytesPerPixel * frameDesc.LengthInPixels];
             
             if (!_Sensor.IsOpen)
