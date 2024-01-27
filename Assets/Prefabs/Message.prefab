@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5a38ea5e7f09c34db58cb1e25e367b7, type: 2}
   m_sharedMaterial: {fileID: -5112968345803517270, guid: e5a38ea5e7f09c34db58cb1e25e367b7, type: 2}
@@ -151,7 +151,7 @@ MonoBehaviour:
   text: {fileID: 0}
   tmpProText: {fileID: 123239995793367575}
   delayBeforeStart: 0
-  timeBtwChars: 0.1
+  timeBtwChars: 0.05
   leadingChar: 
   leadingCharBeforeDelay: 0
   startOnEnable: 1
@@ -172,4 +172,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 123239995793367575}
   _typeWriter: {fileID: 3338794827601844613}
-  standUpActions: []

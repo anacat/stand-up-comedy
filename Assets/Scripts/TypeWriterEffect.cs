@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class TypewriterEffect : MonoBehaviour
 {
-    [SerializeField] Text text;
     [SerializeField] TMP_Text tmpProText;
     string writer;
     [SerializeField] private Coroutine coroutine;
@@ -26,11 +25,6 @@ public class TypewriterEffect : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        if (text != null)
-        {
-            writer = text.text;
-        }
-
         if (tmpProText != null)
         {
             writer = tmpProText.text;
@@ -40,10 +34,6 @@ public class TypewriterEffect : MonoBehaviour
     void Start()
     {
         if (!clearAtStart) return;
-        if (text != null)
-        {
-            text.text = "";
-        }
 
         if (tmpProText != null)
         {
@@ -56,11 +46,6 @@ public class TypewriterEffect : MonoBehaviour
         print("On Enable!");
         if (startOnEnable) 
         {
-            if (text != null)
-            {
-                writer = text.text;
-            }
-
             if (tmpProText != null)
             {
                 writer = tmpProText.text;
@@ -70,57 +55,9 @@ public class TypewriterEffect : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter2D(Collision2D col)
-    //{
-    //    print("Collision!");
-    //    if (startOnCollision)
-    //    {
-    //        StartTypewriter();
-    //    }
-    //}
-
-    //private void OnCollisionExit2D(Collision2D other)
-    //{
-    //    if (collisionExitOptions == options.complete)
-    //    {
-    //        if (text != null)
-    //        {
-    //            text.text = writer;
-    //        }
-
-    //        if (tmpProText != null)
-    //        {
-    //            tmpProText.text = writer;
-    //        }
-    //    }
-    //    // clear
-    //    else
-    //    {
-    //        if (text != null)
-    //        {
-    //            text.text = "";
-    //        }
-
-    //        if (tmpProText != null)
-    //        {
-    //            tmpProText.text = "";
-    //        }
-    //    }
-
-    //    StopAllCoroutines();
-    //}
-
-
     private void StartTypewriter()
     {
         StopAllCoroutines();
-
-        if (text != null)
-        {
-            text.text = "";
-
-            StartCoroutine("TypeWriterText");
-        }
 
         if (tmpProText != null)
         {
@@ -135,46 +72,41 @@ public class TypewriterEffect : MonoBehaviour
         StopAllCoroutines();
     }
 
-    IEnumerator TypeWriterText()
-    {
-        text.text = leadingCharBeforeDelay ? leadingChar : "";
-
-        yield return new WaitForSeconds(delayBeforeStart);
-
-        foreach (char c in writer)
-        {
-            if (text.text.Length > 0)
-            {
-                text.text = text.text.Substring(0, text.text.Length - leadingChar.Length);
-            }
-            text.text += c;
-            text.text += leadingChar;
-            yield return new WaitForSeconds(timeBtwChars);
-        }
-
-        if (leadingChar != "")
-        {
-            text.text = text.text.Substring(0, text.text.Length - leadingChar.Length);
-        }
-
-        yield return null;
-    }
-
     IEnumerator TypeWriterTMP()
     {
         tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
 
         yield return new WaitForSeconds(delayBeforeStart);
 
+        bool insideAngleBrackets = false;
+        string currentText = "";
+
         foreach (char c in writer)
         {
-            if (tmpProText.text.Length > 0)
+            if (c == '<')
             {
-                tmpProText.text = tmpProText.text.Substring(0, tmpProText.text.Length - leadingChar.Length);
+                insideAngleBrackets = true;
+                currentText = "";
             }
-            tmpProText.text += c;
-            tmpProText.text += leadingChar;
-            yield return new WaitForSeconds(timeBtwChars);
+            else if (c == '>')
+            {
+                insideAngleBrackets = false;
+                tmpProText.text += $"<{currentText}>";
+            }
+            else if (insideAngleBrackets)
+            {
+                currentText += c;
+            }
+            else
+            {
+                if (tmpProText.text.Length > 0)
+                {
+                    tmpProText.text = tmpProText.text.Substring(0, tmpProText.text.Length - leadingChar.Length);
+                }
+                tmpProText.text += c;
+                tmpProText.text += leadingChar;
+                yield return new WaitForSeconds(timeBtwChars);
+            }
         }
 
         if (leadingChar != "")

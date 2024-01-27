@@ -21,6 +21,11 @@ public class ChatManager : MonoBehaviour
         
     }
 
+    public void Initializing()
+    {
+
+    }
+
     public void WriteMessage(Message message)
     {
         MessageController msgCon = Instantiate(_messageControllerPrefab, _messageLayout).GetComponent<MessageController>();

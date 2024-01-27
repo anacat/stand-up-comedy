@@ -11,11 +11,11 @@ public class MessageController : MonoBehaviour
     [SerializeField]
     private TypewriterEffect _typeWriter;
 
-    public void Init(Message msg)
+    public void Init(Message msg, bool type = true)
     {
         string text = msg.message;
         _text.text = text;
-        _typeWriter.enabled = true;
+        _typeWriter.enabled = type;
     }
 
     public void Init(Message msg, List<StandUpAction> standUpActions)
@@ -30,4 +30,5 @@ public class MessageController : MonoBehaviour
         _text.text = text;
         _typeWriter.enabled = true;
     }
+
 }
