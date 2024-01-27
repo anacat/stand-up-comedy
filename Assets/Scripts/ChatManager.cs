@@ -8,7 +8,7 @@ public class ChatManager : MonoBehaviour
     private Transform _messageLayout;
     [SerializeField]
     private GameObject _messageControllerPrefab;
-    
+
     // Start is called before the first frame update
     void Start()
     {

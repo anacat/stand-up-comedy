@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class TypewriterEffect : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class TypewriterEffect : MonoBehaviour
     [SerializeField] private bool startOnCollision = false;
     enum options { clear, complete }
     [SerializeField] options collisionExitOptions;
+
+    [SerializeField] private UnityEvent typedEvent;
+    [SerializeField] private UnityEvent finishedEvent;
 
     // Use this for initialization
     void Awake()
@@ -44,7 +48,7 @@ public class TypewriterEffect : MonoBehaviour
     private void OnEnable()
     {
         print("On Enable!");
-        if (startOnEnable) 
+        if (startOnEnable)
         {
             if (tmpProText != null)
             {
@@ -105,6 +109,9 @@ public class TypewriterEffect : MonoBehaviour
                 }
                 tmpProText.text += c;
                 tmpProText.text += leadingChar;
+
+                typedEvent.Invoke();
+
                 yield return new WaitForSeconds(timeBtwChars);
             }
         }
@@ -113,5 +120,8 @@ public class TypewriterEffect : MonoBehaviour
         {
             tmpProText.text = tmpProText.text.Substring(0, tmpProText.text.Length - leadingChar.Length);
         }
+
+
+        finishedEvent.Invoke();
     }
 }
