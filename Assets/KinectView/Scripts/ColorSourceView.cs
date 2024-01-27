@@ -1,31 +1,24 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Windows.Kinect;
 using UnityEngine.UI;
 
 public class ColorSourceView : MonoBehaviour
 {
-    public GameObject ColorSourceManager;
-    private ColorSourceManager _ColorManager;
+    public ColorSourceManager colorSourceManager;
+
+    private RawImage _image;
     
-    void Start ()
+    private void Awake()
     {
-        gameObject.GetComponent<Renderer>().material.SetTextureScale("_MainTex", new Vector2(-1, 1));
+        _image = GetComponent<RawImage>();
     }
-    
+
     void Update()
     {
-        if (ColorSourceManager == null)
+        if (colorSourceManager == null)
         {
             return;
         }
         
-        _ColorManager = ColorSourceManager.GetComponent<ColorSourceManager>();
-        if (_ColorManager == null)
-        {
-            return;
-        }
-        
-        gameObject.GetComponent<RawImage>().texture = _ColorManager.GetColorTexture();
+        _image.texture = colorSourceManager.GetColorTexture();
     }
 }
