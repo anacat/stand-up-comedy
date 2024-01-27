@@ -71,8 +71,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e5a38ea5e7f09c34db58cb1e25e367b7, type: 2}
-  m_sharedMaterial: {fileID: -5112968345803517270, guid: e5a38ea5e7f09c34db58cb1e25e367b7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d2058bc6e4d8f1041b59d923b939e2e4, type: 2}
+  m_sharedMaterial: {fileID: 4403038932079332753, guid: d2058bc6e4d8f1041b59d923b939e2e4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -205,14 +205,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _source: {fileID: 4097351626850083537}
   _clips:
-  - {fileID: 8300000, guid: 6c017b66f83755448ad1aaf26de5f255, type: 3}
-  - {fileID: 8300000, guid: 35c4ffc8676d27040a120c189191c6b3, type: 3}
-  - {fileID: 8300000, guid: 6aca868b95739f449b8a67fed14122c8, type: 3}
-  - {fileID: 8300000, guid: 8c91c77c10e1ce548af80b251a5056ea, type: 3}
-  - {fileID: 8300000, guid: f4482c81872aeb744adff9eac0864c45, type: 3}
-  - {fileID: 8300000, guid: dbfe713726ebea54fb10adc5b39b3147, type: 3}
-  - {fileID: 8300000, guid: 22af88f4eaaecdf45aae54ad3981fbe8, type: 3}
-  - {fileID: 8300000, guid: 1853526e41b60d64a84f553c87e79fbc, type: 3}
+  - {fileID: 8300000, guid: c4cacaa02b6291945bb89d7c9dbf5ada, type: 3}
+  - {fileID: 8300000, guid: df4b6c3e7609e764da5e43e6eec4eef7, type: 3}
+  - {fileID: 8300000, guid: dcbbdb44a97ee4b46ab0127791179c88, type: 3}
+  - {fileID: 8300000, guid: 355761681fdf38045b1374b9e8e2d0c2, type: 3}
+  - {fileID: 8300000, guid: deb8a3afa9ddfdb459f9c34b648c332c, type: 3}
+  - {fileID: 8300000, guid: 3b69d43b84227b543b429ae95d4e30da, type: 3}
+  - {fileID: 8300000, guid: c4383e1ebc6313e4d8b9bc0c5afcd70a, type: 3}
+  - {fileID: 8300000, guid: ee5651bb79d12bd40acc4781ef1b389f, type: 3}
 --- !u!82 &4097351626850083537
 AudioSource:
   m_ObjectHideFlags: 0
@@ -222,11 +222,11 @@ AudioSource:
   m_GameObject: {fileID: 2644623403581102751}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3377479035219649490, guid: 941c05fbc92c6d84d82a920a28aee4aa, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
-  m_Pitch: 0.85
+  m_Volume: 0.5
+  m_Pitch: 0.95
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -269,7 +269,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.038
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -299,7 +299,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1.026
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
