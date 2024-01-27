@@ -50,6 +50,8 @@ public class BodySourceView : MonoBehaviour
     {
     }
 
+    private Kinect.Body[] data;
+
     void Update()
     {
         if (bodySourceManager == null)
@@ -57,7 +59,7 @@ public class BodySourceView : MonoBehaviour
             return;
         }
 
-        Kinect.Body[] data = bodySourceManager.GetData();
+        data = bodySourceManager.GetData();
         if (data == null)
         {
             return;
@@ -192,13 +194,24 @@ public class BodySourceView : MonoBehaviour
 
     public Vector3 GetPlayerPosition()
     {
-        GameObject bodyObject = _Bodies[_playerID];
+        ulong key = 0;
 
-        if (bodyObject == null)
+        for (int i = 0; i < data.Length; i++)
+        {
+            key = data[i].TrackingId;
+
+            if (_Bodies.ContainsKey(key))
+            {
+                break;
+            }
+        }
+
+        if (key == 0)
         {
             return Vector3.zero;
         }
-        
+
+        GameObject bodyObject = _Bodies[key];
         Transform jointObj = bodyObject.transform.Find(Kinect.JointType.SpineBase.ToString());
 
         return jointObj.position;
