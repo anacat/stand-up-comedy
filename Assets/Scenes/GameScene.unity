@@ -309,6 +309,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!224 &1390073055 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5760312820000960684, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
+  m_PrefabInstance: {fileID: 7690667029799792708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1425491755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -366,17 +371,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc29da0457951340836a97c438c11da, type: 3}
---- !u!1 &1425491756 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8759122933386000061, guid: 9dc29da0457951340836a97c438c11da, type: 3}
-  m_PrefabInstance: {fileID: 1425491755}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1425491757 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1157406053457781966, guid: 9dc29da0457951340836a97c438c11da, type: 3}
   m_PrefabInstance: {fileID: 1425491755}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425491756}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ab5bea6110edb4081e490c0982748d, type: 3}
@@ -636,22 +636,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2077140990}
-    - target: {fileID: 531207157601820336, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 951381519269550231, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
-      propertyPath: m_Color.a
-      value: 0.69411767
-      objectReference: {fileID: 0}
-    - target: {fileID: 1033381499422748038, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1869937962079659196, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
-      propertyPath: ColorSourceManager
-      value: 
-      objectReference: {fileID: 1425491756}
     - target: {fileID: 1869937962079659196, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
       propertyPath: colorSourceManager
       value: 
@@ -743,8 +727,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 698079712715820015, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7690667029799792711}
   m_SourcePrefab: {fileID: 100100000, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
+--- !u!1 &7690667029799792710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 698079712715820015, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
+  m_PrefabInstance: {fileID: 7690667029799792708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7690667029799792711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7690667029799792710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d69cfdb102eadc4596007ca4642041a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _messageLayout: {fileID: 1390073055}
+  _messageControllerPrefab: {fileID: 2644623403581102751, guid: 1650835b9a037504da0e295192d9cc04, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

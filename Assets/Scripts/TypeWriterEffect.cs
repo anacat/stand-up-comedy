@@ -54,48 +54,61 @@ public class TypewriterEffect : MonoBehaviour
     private void OnEnable()
     {
         print("On Enable!");
-        if (startOnEnable) StartTypewriter();
-    }
-
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        print("Collision!");
-        if (startOnCollision)
+        if (startOnEnable) 
         {
+            if (text != null)
+            {
+                writer = text.text;
+            }
+
+            if (tmpProText != null)
+            {
+                writer = tmpProText.text;
+            }
+
             StartTypewriter();
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (collisionExitOptions == options.complete)
-        {
-            if (text != null)
-            {
-                text.text = writer;
-            }
+    //private void OnCollisionEnter2D(Collision2D col)
+    //{
+    //    print("Collision!");
+    //    if (startOnCollision)
+    //    {
+    //        StartTypewriter();
+    //    }
+    //}
 
-            if (tmpProText != null)
-            {
-                tmpProText.text = writer;
-            }
-        }
-        // clear
-        else
-        {
-            if (text != null)
-            {
-                text.text = "";
-            }
+    //private void OnCollisionExit2D(Collision2D other)
+    //{
+    //    if (collisionExitOptions == options.complete)
+    //    {
+    //        if (text != null)
+    //        {
+    //            text.text = writer;
+    //        }
 
-            if (tmpProText != null)
-            {
-                tmpProText.text = "";
-            }
-        }
+    //        if (tmpProText != null)
+    //        {
+    //            tmpProText.text = writer;
+    //        }
+    //    }
+    //    // clear
+    //    else
+    //    {
+    //        if (text != null)
+    //        {
+    //            text.text = "";
+    //        }
 
-        StopAllCoroutines();
-    }
+    //        if (tmpProText != null)
+    //        {
+    //            tmpProText.text = "";
+    //        }
+    //    }
+
+    //    StopAllCoroutines();
+    //}
 
 
     private void StartTypewriter()
