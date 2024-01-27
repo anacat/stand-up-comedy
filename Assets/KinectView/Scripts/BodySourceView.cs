@@ -44,6 +44,8 @@ public class BodySourceView : MonoBehaviour
             { Kinect.JointType.Neck, Kinect.JointType.Head },
         };
 
+    private ulong _playerID;
+
     private void Awake()
     {
     }
@@ -72,6 +74,12 @@ public class BodySourceView : MonoBehaviour
             if (body.IsTracked)
             {
                 trackedIds.Add(body.TrackingId);
+
+                if (_playerID == 0)
+                {
+                    _playerID = body.TrackingId;
+                    Debug.Log(_playerID);
+                }
             }
         }
 
@@ -178,5 +186,21 @@ public class BodySourceView : MonoBehaviour
     {
         Vector3 vec = new Vector3(joint.Position.X * scale, joint.Position.Y * scale, joint.Position.Z * scale);
         return vec + offset;
+    }
+
+    public bool FoundPlayer() => _Bodies.Count > 0;
+
+    public Vector3 GetPlayerPosition()
+    {
+        GameObject bodyObject = _Bodies[_playerID];
+
+        if (bodyObject == null)
+        {
+            return Vector3.zero;
+        }
+        
+        Transform jointObj = bodyObject.transform.Find(Kinect.JointType.SpineBase.ToString());
+
+        return jointObj.position;
     }
 }
