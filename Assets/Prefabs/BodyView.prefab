@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8821130411451d343a1488e2a9db134e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  danceCollidersPrefab: {fileID: 4462562841963378003, guid: 971498785311e9e4a869d1b96fb98ac4, type: 3}
   offset: {x: 4, y: 8.35, z: 0}
   scale: 100
   BoneMaterial: {fileID: 2100000, guid: f2ea145c63353784985576f08398a815, type: 2}
