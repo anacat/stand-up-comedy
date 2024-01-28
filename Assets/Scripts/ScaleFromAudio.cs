@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ScaleFromAudio : MonoBehaviour
 {
@@ -12,8 +14,17 @@ public class ScaleFromAudio : MonoBehaviour
 
     public AsciiSlider slider;
 
-    // Update is called once per frame
-    void Update()
+    private float score;
+    private bool scoring;
+    private float finalScore;
+
+    private void Start()
+    {
+        scoring = false;
+        finalScore = 0;
+    }
+
+    void FixedUpdate()
     {
         float loudness = detector.GetLoudnessFronMicro() * loudnessSensibility;
 
@@ -25,5 +36,27 @@ public class ScaleFromAudio : MonoBehaviour
         float value = loudness * maxValue;
 
         slider.SetValue((int)value + 1);
+
+        if(scoring)
+            score += value;
+    }
+
+
+    public void StartScoring()
+    {
+        score = 0;
+        scoring = true;
+    }
+
+    public float StopRecording()
+    {
+        scoring = false;
+        finalScore += score;
+        return score;
+    }
+
+    public float GetFinalScore()
+    {
+        return finalScore;
     }
 }

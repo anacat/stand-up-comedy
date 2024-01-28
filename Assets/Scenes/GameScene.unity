@@ -222,6 +222,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d69cfdb102eadc4596007ca4642041a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &768174419 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6773838552290898387, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
+  m_PrefabInstance: {fileID: 7690667029799792708}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbecb33dfab3cec4eac3b5001ef84b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &898738634
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd01d0b2e896c2744852c0c49984d82e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sampleWindow: 32
+  sampleWindow: 64
 --- !u!1 &902218617
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +695,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 432919745}
     - target: {fileID: 8073654923411826634, guid: 487513a87270994459955547cb2480e3, type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 768174419}
+    - target: {fileID: 8073654923411826634, guid: 487513a87270994459955547cb2480e3, type: 3}
       propertyPath: sitDown
       value: 
       objectReference: {fileID: 11400000, guid: 4ed5abffe216c3743b13d8c09612963f, type: 2}
@@ -705,7 +720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073654923411826634, guid: 487513a87270994459955547cb2480e3, type: 3}
       propertyPath: messageDelay
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8073654923411826634, guid: 487513a87270994459955547cb2480e3, type: 3}
       propertyPath: satDownSuccess
@@ -1273,8 +1288,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 898738636}
     - target: {fileID: 6773838552290898387, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
+      propertyPath: detectionDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773838552290898387, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
       propertyPath: loudnessSensibility
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7639384901145360710, guid: 39f6fd30a1c76e44e989e13174184861, type: 3}
       propertyPath: m_AnchorMax.y

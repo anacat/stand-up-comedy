@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 calibrationBounds;
     public int standUpTime = 10;
     public float messageDelay = 2;
+    public ScaleFromAudio audio;
 
     [Header("Chair")] public Vector2 sittingBounds;
     private BodySourceView _bodyView;
@@ -126,8 +127,9 @@ public class PlayerController : MonoBehaviour
 
         chat.WriteModifiedMessage(standUpMessages[currentStand], actions);
         yield return new WaitForSeconds(messageDelay);
-
         yield return new WaitForSeconds(2f);
+
+        audio.StartScoring();
 
         float distance = 0f;
         
@@ -145,10 +147,15 @@ public class PlayerController : MonoBehaviour
         }
 
         chat.WriteMessage(calculating);
-
         yield return new WaitForSeconds(standUpTime);
 
-        chat.WriteMessage(wellDone);
+        float audScore = audio.StopRecording();
+
+        Message msg = new Message();
+
+        msg.message = wellDone.message + "Audience Score: " + audScore;
+
+        chat.WriteMessage(msg);
         yield return new WaitForSeconds(messageDelay);
 
         yield return new WaitForSeconds(1f);
