@@ -6,11 +6,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public TextMeshProUGUI text;
+    public ChatManager chat;
     public Vector2 calibrationBounds;
+    public int standUpTime = 10;
+    public float messageDelay = 2;
 
     [Header("Chair")] public Vector2 sittingBounds;
     private BodySourceView _bodyView;
+    private int currentStand;
+
+    [Header("Messages")]
+    [SerializeField] private Message lookingForPlayer;
+    [SerializeField] private Message moveIntoPosition;
+    [SerializeField] private Message arrivedInPosition;
+    [SerializeField] private Message sitDown;
+    [SerializeField] private Message satDownSuccess;
+    [SerializeField] private List<Message> standUpMessages;
+    [SerializeField] private Message wellDone;
+    [SerializeField] private Message finished;
+    [SerializeField] private Message calculating;
+
+    [Header("Actions")]
+    [SerializeField] private List<StandUpAction> colliderActions;
+    [SerializeField] private List<StandUpAction> flavourActions;
 
     private void Awake()
     {
@@ -19,16 +37,25 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+
+    }
+
+    public void StartGame()
+    {
         StartCoroutine(WaitForCalibration());
+
+        currentStand = 0;
     }
 
     public IEnumerator WaitForCalibration()
     {
-        text.text = "Waiting for P1";
+        chat.WriteMessage(lookingForPlayer);
+        yield return new WaitForSeconds(messageDelay);
 
         yield return new WaitUntil(() => _bodyView.FoundPlayer());
 
-        text.text = "get into position";
+        chat.WriteMessage(moveIntoPosition);
+        yield return new WaitForSeconds(messageDelay);
 
         float distance = 0f;
 
@@ -44,8 +71,9 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-        text.text = "Perfect";
-        
+        chat.WriteMessage(arrivedInPosition);
+        yield return new WaitForSeconds(messageDelay);
+
         yield return new WaitForSeconds(1f);
 
         StartCoroutine(SitOnChair());
@@ -53,8 +81,9 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator SitOnChair()
     {
-        text.text = "Please sit";
-        
+        chat.WriteMessage(sitDown);
+        yield return new WaitForSeconds(messageDelay);
+
         yield return new WaitForSeconds(1f);
 
         float distance = 0f;
@@ -65,13 +94,14 @@ public class PlayerController : MonoBehaviour
             if (ancaPos != Vector3.zero)
             {
                 distance = Camera.main.transform.position.y - ancaPos.y;
-                text.text = $"{distance:0.0}";
+                //text.text = $"{distance:0.0}";
             }
 
             yield return null;
         }
 
-        text.text = "Perfect";
+        chat.WriteMessage(satDownSuccess);
+        yield return new WaitForSeconds(messageDelay);
 
         yield return new WaitForSeconds(1f);
 
@@ -80,9 +110,24 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator NowGetUp()
     {
-        text.text = "Please get up";
-        
-        yield return new WaitForSeconds(1f);
+        //GenerateModifier
+        List<StandUpAction> actions = new List<StandUpAction>();
+        for(int i = 0; i < currentStand; i++)
+        {
+            if(currentStand % 2 == 0)
+            {
+                actions.Add(flavourActions[UnityEngine.Random.Range(0, flavourActions.Count)]);
+            }
+            else
+            {
+                actions.Add(colliderActions[UnityEngine.Random.Range(0, colliderActions.Count)]);
+            }
+        }
+
+        chat.WriteModifiedMessage(standUpMessages[currentStand], actions);
+        yield return new WaitForSeconds(messageDelay);
+
+        yield return new WaitForSeconds(2f);
 
         float distance = 0f;
         
@@ -93,16 +138,21 @@ public class PlayerController : MonoBehaviour
             if (ancaPos != Vector3.zero)
             {
                 distance = Camera.main.transform.position.y - ancaPos.y;
-                text.text = $"{distance:0.0}";
+                //text.text = $"{distance:0.0}";
             }
 
             yield return null;
         }
 
-        text.text = "Perfect";
+        chat.WriteMessage(calculating);
+
+        yield return new WaitForSeconds(standUpTime);
+
+        chat.WriteMessage(wellDone);
+        yield return new WaitForSeconds(messageDelay);
 
         yield return new WaitForSeconds(1f);
 
-        text.text = "Thank you for your time";
+        chat.WriteMessage(finished);
     }
 }

@@ -30,5 +30,4 @@ public class MessageController : MonoBehaviour
         _text.text = text;
         _typeWriter.enabled = true;
     }
-
 }

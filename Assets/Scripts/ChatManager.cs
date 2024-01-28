@@ -33,4 +33,11 @@ public class ChatManager : MonoBehaviour
 
         msgCon.Init(message);
     }
+
+    public void WriteModifiedMessage(Message message, List<StandUpAction> actions)
+    {
+        MessageController msgCon = Instantiate(_messageControllerPrefab, _messageLayout).GetComponent<MessageController>();
+
+        msgCon.Init(message, actions);
+    }
 }
