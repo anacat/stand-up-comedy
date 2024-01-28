@@ -182,7 +182,7 @@ Shader "UI/ScanlineShader"
                 float interference = tex2D(_InterferenceTex, interferenceUV);
 
                 col = lerp(col, col * scanlines, _Strength);
-                col.a = lerp(1.0, 0.0, col.r) - _Strength;
+                col.a = lerp(1.0, 0.0, col.r);
 
                 col = lerp(col, 1.0f, interference);
                 return col;
