@@ -8,7 +8,8 @@ public class DanceCollider : MonoBehaviour
 
    private void OnTriggerEnter(Collider other)
    {
-      Debug.Log("owie", other.gameObject);
+
+        PlayerController.instance.movesScore += 10;
 
    }
 }

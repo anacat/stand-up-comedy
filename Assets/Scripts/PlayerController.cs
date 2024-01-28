@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
+    public int movesScore;
+    public int finalMovesScore;
     public ChatManager chat;
     public Vector2 calibrationBounds;
     public int standUpTime = 10;
@@ -26,6 +30,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Message wellDone;
     [SerializeField] private Message finished;
     [SerializeField] private Message calculating;
+    [SerializeField] private Message audienceScore;
+    [SerializeField] private List<Message> robotScore;
+    [SerializeField] private Message initialRobotScore;
 
     [Header("Actions")]
     [SerializeField] private List<StandUpAction> colliderActions;
@@ -33,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         _bodyView = GetComponent<BodySourceView>();
     }
 
@@ -46,6 +54,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(WaitForCalibration());
 
         currentStand = 0;
+        finalMovesScore = 0;
     }
 
     public IEnumerator WaitForCalibration()
@@ -75,8 +84,6 @@ public class PlayerController : MonoBehaviour
         chat.WriteMessage(arrivedInPosition);
         yield return new WaitForSeconds(messageDelay);
 
-        yield return new WaitForSeconds(1f);
-
         StartCoroutine(SitOnChair());
     }
 
@@ -84,8 +91,6 @@ public class PlayerController : MonoBehaviour
     {
         chat.WriteMessage(sitDown);
         yield return new WaitForSeconds(messageDelay);
-
-        yield return new WaitForSeconds(1f);
 
         float distance = 0f;
         while (distance < sittingBounds.x || distance < sittingBounds.y)
@@ -110,6 +115,8 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator NowGetUp()
     {
+        movesScore = 0;
+
         //GenerateModifier
         List<StandUpAction> actions = new List<StandUpAction>();
         for(int i = 0; i < currentStand; i++)
@@ -126,7 +133,6 @@ public class PlayerController : MonoBehaviour
 
         chat.WriteModifiedMessage(standUpMessages[currentStand], actions);
         yield return new WaitForSeconds(messageDelay);
-        yield return new WaitForSeconds(2f);
 
         audio.StartScoring();
 
@@ -148,16 +154,33 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(standUpTime);
 
         float audScore = audio.StopRecording();
+        finalMovesScore += movesScore;
 
-        Message msg = new Message();
+        audienceScore.message = audienceScore.message.Replace("{score}", audScore.ToString());
+        int rand = UnityEngine.Random.Range(0, robotScore.Count);
+        robotScore[rand].message = robotScore[rand].message.Replace("{score}", movesScore.ToString());
 
-        msg.message = wellDone.message + "Audience Score: " + audScore;
-
-        chat.WriteMessage(msg);
+        //subsittuir por maquina rating
+        if(currentStand == 0)
+        {
+            chat.WriteMessage(initialRobotScore);
+        }
+        else
+        { chat.WriteMessage(robotScore[rand]); }
+        chat.WriteMessage(audienceScore);
         yield return new WaitForSeconds(messageDelay);
 
-        yield return new WaitForSeconds(1f);
+        if(currentStand < standUpMessages.Count - 1)
+        {
+            StartCoroutine(NowGetUp());
+            currentStand++;
+            FindObjectOfType<CreateColliders>().gameObject.SetActive(true);
+        }
+        else
+        {
+            finished.message = finished.message.Replace("{player}", audio.GetFinalScore().ToString()).Replace("{robot}", finalMovesScore.ToString());
 
-        chat.WriteMessage(finished);
+            chat.WriteMessageEnd(finished);
+        }
     }
 }

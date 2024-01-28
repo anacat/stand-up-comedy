@@ -147,6 +147,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686c3f78dddc13944978761cbe4e2dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
+  movesScore: 0
+  finalMovesScore: 0
+  chat: {fileID: 0}
   calibrationBounds: {x: 180, y: 300}
+  standUpTime: 10
+  messageDelay: 6
+  audio: {fileID: 0}
   sittingBounds: {x: 50, y: 60}
+  lookingForPlayer: {fileID: 11400000, guid: f27e0c8f5e5e5434fb9ea70fd9edd83c, type: 2}
+  moveIntoPosition: {fileID: 11400000, guid: b3fd66d0ebf13db41937ee4f7624202f, type: 2}
+  arrivedInPosition: {fileID: 11400000, guid: b615480d5b4ff734180f4e91751c6b53, type: 2}
+  sitDown: {fileID: 11400000, guid: 4ed5abffe216c3743b13d8c09612963f, type: 2}
+  satDownSuccess: {fileID: 11400000, guid: 341f252fac702a644a82e7c76146a030, type: 2}
+  standUpMessages:
+  - {fileID: 11400000, guid: 79e17308d931ea04cb372fc87e66ddd8, type: 2}
+  - {fileID: 11400000, guid: bb989ed1fedfa26489579e29739461e6, type: 2}
+  - {fileID: 11400000, guid: 8e99809f4a5a64d45911403aec42170b, type: 2}
+  - {fileID: 11400000, guid: d33f0eb4c505c4443973d3496bf8908c, type: 2}
+  - {fileID: 11400000, guid: 65ecd9a7a2af2934bbdab24a996d9f82, type: 2}
+  wellDone: {fileID: 11400000, guid: db03804d1f29e364ca1b6d19c0222fc5, type: 2}
+  finished: {fileID: 11400000, guid: 27d7cff3a9882cc4cb3b89721e313b6e, type: 2}
+  calculating: {fileID: 11400000, guid: 3cb090e1eae94fe43939ca05631e582f, type: 2}
+  audienceScore: {fileID: 11400000, guid: 520c95934f139754cb7219e48f7feb5e, type: 2}
+  robotScore:
+  - {fileID: 11400000, guid: 90b58e3eb7033f34797f6d04f9d45767, type: 2}
+  - {fileID: 11400000, guid: 952cc8048c03f834eb7db7ed98356f15, type: 2}
+  - {fileID: 11400000, guid: ffa8e2825c5edfe41804b019b4ec5ce1, type: 2}
+  - {fileID: 11400000, guid: 21798712a5e5a5445aca100044d4cf98, type: 2}
+  initialRobotScore: {fileID: 11400000, guid: 031275ef01f319f46b6527f1a10eef88, type: 2}
+  colliderActions:
+  - {fileID: 11400000, guid: 73d56e21deafd364ab203a9c455f4fe5, type: 2}
+  - {fileID: 11400000, guid: 68fead1c789599d4c8c883b0052f37cb, type: 2}
+  - {fileID: 11400000, guid: 88434b1bc2f6fa1479a77317df0424d9, type: 2}
+  flavourActions:
+  - {fileID: 11400000, guid: f83197cd414802e4b8c5c1273083a0b2, type: 2}
+  - {fileID: 11400000, guid: 89ad30ee718e4ab4d8823a26513f9ceb, type: 2}
+  - {fileID: 11400000, guid: 31700b351c3e0b84296b0fa96a4bd15b, type: 2}
+  - {fileID: 11400000, guid: a13bc6f7835b84748a0ef213cd18beeb, type: 2}
+  - {fileID: 11400000, guid: 696b36addd49beb49a5c23c121fce31b, type: 2}
+  - {fileID: 11400000, guid: 2da75612d91aa214584f33baf2548069, type: 2}

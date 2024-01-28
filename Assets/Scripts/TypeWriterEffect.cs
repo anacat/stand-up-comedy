@@ -24,7 +24,7 @@ public class TypewriterEffect : MonoBehaviour
     [SerializeField] options collisionExitOptions;
 
     [SerializeField] private UnityEvent typedEvent;
-    [SerializeField] private UnityEvent finishedEvent;
+    public UnityEvent finishedEvent;
 
     // Use this for initialization
     void Awake()

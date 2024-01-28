@@ -15,5 +15,5 @@ MonoBehaviour:
   message: '
 
 
-    Final stand up. {0}{1}{2}{3}'
+    Final stand up, please {0}, {1}, {2}, {3}.'
   charSize: 0
