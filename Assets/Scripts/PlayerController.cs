@@ -94,7 +94,6 @@ public class PlayerController : MonoBehaviour
             if (ancaPos != Vector3.zero)
             {
                 distance = Camera.main.transform.position.y - ancaPos.y;
-                //text.text = $"{distance:0.0}";
             }
 
             yield return null;
@@ -138,7 +137,6 @@ public class PlayerController : MonoBehaviour
             if (ancaPos != Vector3.zero)
             {
                 distance = Camera.main.transform.position.y - ancaPos.y;
-                //text.text = $"{distance:0.0}";
             }
 
             yield return null;

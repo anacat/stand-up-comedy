@@ -4,6 +4,7 @@ using Kinect = Windows.Kinect;
 
 public class BodySourceView : MonoBehaviour
 {
+    public GameObject danceCollidersPrefab;
     public Vector3 offset;
     public float scale = 10f;
     public Material BoneMaterial;
@@ -80,7 +81,7 @@ public class BodySourceView : MonoBehaviour
                 if (_playerID == 0)
                 {
                     _playerID = body.TrackingId;
-                    Debug.Log(_playerID);
+                    //Debug.Log(_playerID);
                 }
             }
         }
@@ -120,7 +121,7 @@ public class BodySourceView : MonoBehaviour
     {
         GameObject body = new GameObject("Body:" + id);
         body.layer = LayerMask.NameToLayer("Skeleton");
-
+        
         for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
         {
             GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -134,6 +135,17 @@ public class BodySourceView : MonoBehaviour
             jointObj.transform.localScale = new Vector3(1f, 1f, 1f);
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
+
+            SphereCollider collider = jointObj.AddComponent<SphereCollider>();
+            collider.radius = 10f;
+            collider.isTrigger = true;
+
+            if (jt == Kinect.JointType.SpineBase)
+            {
+                GameObject dc = Instantiate(danceCollidersPrefab, jointObj.transform);
+                dc.name = "DanceColliders" + id;
+                dc.transform.position += Vector3.up * 5f;
+            }
         }
 
         return body;
@@ -206,7 +218,7 @@ public class BodySourceView : MonoBehaviour
             }
         }
 
-        if (key == 0)
+        if (key == 0 || !_Bodies.ContainsKey(key))
         {
             return Vector3.zero;
         }
