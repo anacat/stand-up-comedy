@@ -1,9 +1,21 @@
 //https://danielilett.com/2020-02-12-tut3-7-vintage-video/ 
-Shader "Hidden/ScanlineShader"
+Shader "UI/ScanlineShader"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+        [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
+        _Color ("Tint", Color) = (1,1,1,1)
+
+        _StencilComp ("Stencil Comparison", Float) = 8
+        _Stencil ("Stencil ID", Float) = 0
+        _StencilOp ("Stencil Operation", Float) = 0
+        _StencilWriteMask ("Stencil Write Mask", Float) = 255
+        _StencilReadMask ("Stencil Read Mask", Float) = 255
+
+        _ColorMask ("Color Mask", Float) = 15
+
+        [Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("Use Alpha Clip", Float) = 0
+
         _ScanlineTex ("Scanline Tex", 2D) = "white" {}
         _Strength ("Strength", Float) = 0.5
         _Size ("Size", float) = 1
@@ -14,8 +26,30 @@ Shader "Hidden/ScanlineShader"
     }
     SubShader
     {
-        // No culling or depth
-        Cull Off ZWrite Off ZTest Always
+        Tags
+        {
+            "Queue"="Transparent"
+            "IgnoreProjector"="True"
+            "RenderType"="Transparent"
+            "PreviewType"="Plane"
+            "CanUseSpriteAtlas"="True"
+        }
+
+        Stencil
+        {
+            Ref [_Stencil]
+            Comp [_StencilComp]
+            Pass [_StencilOp]
+            ReadMask [_StencilReadMask]
+            WriteMask [_StencilWriteMask]
+        }
+
+        Cull Off
+        Lighting Off
+        ZWrite Off
+        ZTest [unity_GUIZTestMode]
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask [_ColorMask]
 
         Pass
         {
@@ -24,28 +58,34 @@ Shader "Hidden/ScanlineShader"
             #pragma fragment frag
 
             #include "UnityCG.cginc"
+            #include "UnityUI.cginc"
+
+            #pragma multi_compile_local _ UNITY_UI_CLIP_RECT
+            #pragma multi_compile_local _ UNITY_UI_ALPHACLIP
 
             struct appdata
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
+                float4 color : COLOR;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
             struct v2f
             {
-                float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                fixed4 color : COLOR;
+                float2 uv : TEXCOORD0;
+                float4 worldPosition : TEXCOORD1;
+                UNITY_VERTEX_OUTPUT_STEREO
             };
 
-            v2f vert(appdata v)
-            {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-                return o;
-            }
-
             sampler2D _MainTex;
+            fixed4 _Color;
+            fixed4 _TextureSampleAdd;
+            float4 _ClipRect;
+            float4 _MainTex_ST;
+
             sampler2D _ScanlineTex;
             float _Strength;
             float _Size;
@@ -53,6 +93,20 @@ Shader "Hidden/ScanlineShader"
             sampler2D _InterferenceTex;
             float _Speed;
             float _Extra;
+
+            v2f vert(appdata v)
+            {
+                v2f OUT;
+                UNITY_SETUP_INSTANCE_ID(v);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
+                OUT.worldPosition = v.vertex;
+                OUT.vertex = UnityObjectToClipPos(OUT.worldPosition);
+
+                OUT.uv = TRANSFORM_TEX(v.uv, _MainTex);
+
+                OUT.color = v.color * _Color;
+                return OUT;
+            }
 
             // Generate time-sensitive random numbers between 0 and 1.
             float rand(float2 pos)
@@ -106,9 +160,19 @@ Shader "Hidden/ScanlineShader"
 
             fixed4 frag(v2f i) : SV_Target
             {
+                half4 color = (tex2D(_MainTex, i.uv) + _TextureSampleAdd) * i.color;
+
+                #ifdef UNITY_UI_CLIP_RECT
+                color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
+                #endif
+
+                #ifdef UNITY_UI_ALPHACLIP
+                clip (color.a - 0.001);
+                #endif
+
                 float2 scanlineUV = i.uv * (_ScreenParams.y / _Size);
 
-                fixed4 col = tex2D(_MainTex, i.uv);
+                fixed4 col = color;
                 fixed4 scanlines = tex2D(_ScanlineTex, scanlineUV);
 
                 float2 pos = i.uv * _ScreenParams.xy / 2.0f;
@@ -118,8 +182,9 @@ Shader "Hidden/ScanlineShader"
                 float interference = tex2D(_InterferenceTex, interferenceUV);
 
                 col = lerp(col, col * scanlines, _Strength);
-                col = lerp(col, 1.0f, interference);
+                col.a = lerp(1.0, 0.0, col.r) - _Strength;
 
+                col = lerp(col, 1.0f, interference);
                 return col;
             }
             ENDCG
